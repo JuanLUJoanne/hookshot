@@ -1,0 +1,80 @@
+plugins:
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.3
+  SuggestExtensions: false
+  Exclude:
+    - "bin/**/*"
+    - "spec/dummy/**/*"
+    - "vendor/**/*"
+    - "*.gemspec"
+    - "Gemfile"
+
+# ── Layout ────────────────────────────────────────────────────────────────────
+
+Layout/LineLength:
+  Max: 120
+  AllowedPatterns:
+    - '^\s*#'   # allow long comment lines (URLs, YARD docs)
+
+# ── Metrics ───────────────────────────────────────────────────────────────────
+
+Metrics/MethodLength:
+  Max: 15
+
+Metrics/ClassLength:
+  Max: 150
+
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
+
+# ── Style ─────────────────────────────────────────────────────────────────────
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  EnforcedStyle: always
+
+Style/Documentation:
+  Enabled: false  # YARD docs are preferred; inline class docs are noise
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+# ── Rails ─────────────────────────────────────────────────────────────────────
+
+Rails/FilePath:
+  Enabled: false  # Engine paths differ from standard app layout
+
+# ── RSpec ─────────────────────────────────────────────────────────────────────
+
+RSpec/MultipleExpectations:
+  Max: 5  # Some integration tests legitimately assert multiple outcomes
+
+RSpec/ExampleLength:
+  Max: 25
+
+RSpec/NestedGroups:
+  Max: 4
+
+RSpec/ContextWording:
+  Prefixes:
+    - "when"
+    - "with"
+    - "without"
+
+RSpec/DescribeClass:
+  Exclude:
+    - "spec/integration/**/*"
