@@ -13,4 +13,5 @@ spec/examples.txt
 spec/dummy/tmp/
 spec/dummy/log/
 spec/dummy/.local_secret
+spec/dummy/spec/
 

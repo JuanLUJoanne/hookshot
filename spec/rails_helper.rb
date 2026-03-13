@@ -2,15 +2,18 @@
 
 ENV["RAILS_ENV"] ||= "test"
 
+# Change into the dummy app directory so Rails resolves config/database.yml,
+# config/environments/, etc. relative to spec/dummy (its actual root).
+# This is the standard pattern for mountable engine test suites.
+Dir.chdir(File.expand_path("dummy", __dir__))
+
 require File.expand_path("dummy/config/environment", __dir__)
 
 require "rspec/rails"
+require "factory_bot_rails"
 require "shoulda/matchers"
 require "webmock/rspec"
 
-# Load engine migrations into the dummy app's migration path.
-# This ensures db:migrate picks up Hookshot's migrations.
-ENGINE_ROOT = File.expand_path("..", __dir__)
 ActiveRecord::Migration.maintain_test_schema!
 
 # Load spec/support files

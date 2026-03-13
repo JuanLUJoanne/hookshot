@@ -24,6 +24,8 @@ Layout/LineLength:
 
 Metrics/MethodLength:
   Max: 15
+  Exclude:
+    - "db/migrate/**/*"   # Migrations enumerate many columns by design
 
 Metrics/ClassLength:
   Max: 150
@@ -78,3 +80,10 @@ RSpec/ContextWording:
 RSpec/DescribeClass:
   Exclude:
     - "spec/integration/**/*"
+
+Rails/I18nLocaleTexts:
+  Enabled: false  # Inline validation messages are correct for a gem — no host app locale files
+
+Metrics/AbcSize:
+  Exclude:
+    - "db/migrate/**/*"   # Column-heavy migrations naturally exceed the threshold
