@@ -62,15 +62,15 @@ jobs:
           bundler-cache: true
 
       - name: Set up database
-        run: |
-          cd spec/dummy
-          PGPASSWORD=postgres bundle exec rails db:create db:migrate
+        # The postgres service already creates hookshot_test via POSTGRES_DB.
+        # Use rake (not rails) from the dummy app so engine migrations are found.
+        run: cd spec/dummy && bundle exec rake db:migrate
         env:
           DATABASE_USER: postgres
-          PGPASSWORD: postgres
+          DATABASE_PASSWORD: postgres
 
       - name: Run specs
         run: bundle exec rspec
         env:
           DATABASE_USER: postgres
-          PGPASSWORD: postgres
+          DATABASE_PASSWORD: postgres
