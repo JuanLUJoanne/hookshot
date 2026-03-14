@@ -46,9 +46,6 @@ end
 # Services are plain Ruby — required explicitly rather than autoloaded.
 # They live in lib/ because they are engine internals, not host-app components.
 require "hookshot/configuration"
-# Service requires added as they are implemented:
-# require "hookshot/services/event_dispatcher"
-# require "hookshot/services/delivery_executor"
-# require "hookshot/services/signature_generator"
-# require "hookshot/services/signature_verifier"
-# require "hookshot/services/retry_policy"
+require "hookshot/services/signature_generator"
+require "hookshot/services/signature_verifier"
+# Uncommented as each service is implemented:
