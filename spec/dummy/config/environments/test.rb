@@ -7,4 +7,5 @@ Rails.application.configure do
   config.active_support.disallowed_deprecation = :raise
   config.active_support.disallowed_deprecation_warnings = []
   config.action_controller.allow_forgery_protection = false
+  config.active_job.queue_adapter = :test
 end

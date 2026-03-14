@@ -49,3 +49,6 @@ require "hookshot/configuration"
 require "hookshot/services/signature_generator"
 require "hookshot/services/signature_verifier"
 # Uncommented as each service is implemented:
+require "hookshot/services/retry_policy"
+require "hookshot/services/delivery_executor"
+require "hookshot/services/event_dispatcher"
