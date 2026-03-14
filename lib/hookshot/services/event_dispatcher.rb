@@ -40,8 +40,10 @@ module Hookshot
         ActiveRecord::Base.transaction do
           event = create_event
           deliveries = create_deliveries(event)
-          enqueue_jobs(deliveries)
+          # Mark dispatched before enqueuing so jobs see the correct status even
+          # when executed inline (e.g. test adapter's perform_enqueued_at_jobs).
           event.status_dispatched!
+          enqueue_jobs(deliveries)
           event
         end
       end

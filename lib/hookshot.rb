@@ -38,7 +38,7 @@ module Hookshot
     # @param idempotency_key [String, nil] optional; auto-generated UUID if omitted
     # @return [Hookshot::Event] the created event record
     def trigger(event_type, payload:, idempotency_key: nil)
-      EventDispatcher.call(event_type:, payload:, idempotency_key:)
+      Services::EventDispatcher.call(event_type:, payload:, idempotency_key:)
     end
   end
 end

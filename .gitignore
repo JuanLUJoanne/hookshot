@@ -15,3 +15,5 @@ spec/dummy/log/
 spec/dummy/.local_secret
 spec/dummy/spec/
 
+.claude/
+.vscode/
