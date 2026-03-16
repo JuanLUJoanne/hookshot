@@ -1,0 +1,16 @@
+/.bundle/
+/doc/
+/log/*.log
+/pkg/
+/tmp/
+
+# RSpec
+spec/examples.txt
+
+# Dummy app runtime artifacts
+spec/dummy/tmp/
+spec/dummy/log/
+spec/dummy/.local_secret
+spec/dummy/spec/
+
+.vscode/
